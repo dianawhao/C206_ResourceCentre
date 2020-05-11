@@ -26,7 +26,7 @@ public class ResourceCentre {
 
 			} else if (option == 2) {
 
-				// Add item
+				// Add a new item
 				ResourceCentre.itemTypeMenu();
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
