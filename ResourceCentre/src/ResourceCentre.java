@@ -32,7 +32,7 @@ public class ResourceCentre {
 
 				if (itemType == 1) {
 
-					// Add camcorder
+					// Add a camcorder
 					ResourceCentre.addCamcorder(camcorderList);
 
 				} else if (itemType == 2) {
