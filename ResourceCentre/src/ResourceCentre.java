@@ -33,12 +33,14 @@ public class ResourceCentre {
 				if (itemType == 1) {
 
 					// Add a camcorder
-					ResourceCentre.addCamcorder(camcorderList);
+					Camcorder cc = inputCamcorder();
+					ResourceCentre.addCamcorder(camcorderList, cc);
 
 				} else if (itemType == 2) {
 
 					// Add Chromebook
-					ResourceCentre.addChromebook(chromebookList);
+					Chromebook cb = inputChromebook();
+					ResourceCentre.addChromebook(chromebookList, cb);
 
 				} else {
 					System.out.println("Invalid type");
@@ -160,22 +162,34 @@ public class ResourceCentre {
 		}
 		return avail;
 	}
-
-	public static void addCamcorder(ArrayList<Camcorder> camcorderList) {
+	public static Camcorder inputCamcorder() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
 		int zoom = Helper.readInt("Enter optical zoom > ");
 
-		camcorderList.add(new Camcorder(tag, description, zoom));
-		System.out.println("Camcorder added");
+		Camcorder cc= new Camcorder(tag, description, zoom);
+		return cc;
+		
 	}
 
-	public static void addChromebook(ArrayList<Chromebook> chromebookList) {
+	public static Chromebook inputChromebook() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
 		String os = Helper.readString("Enter operating system > ");
 
-		chromebookList.add(new Chromebook(tag, description, os));
+		Chromebook cb= new Chromebook(tag, description, os);
+		return cb;
+		
+	}	
+	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
+		
+		camcorderList.add(cc);
+		System.out.println("Camcorder added");
+	}
+
+	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
+
+		chromebookList.add(cb);
 		System.out.println("Chromebook added");
 	}
 
