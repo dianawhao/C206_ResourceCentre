@@ -29,15 +29,7 @@ public class ResourceCentreTest {
 		chromebookList= new ArrayList<Chromebook>();
 	}
 	
-	@After
-	 public void tearDown() throws Exception{
-		cc1 = null;
-		cc2 = null;
-		cb1 = null;
-		cb2 = null;
-		camcorderList = null;
-		chromebookList = null;
-	}
+
 	
 	@Test
 	public void addCamcorderTest() {
@@ -121,5 +113,15 @@ public class ResourceCentreTest {
 	@Test
 	public void isReturnedChromebookTest() {
 		//fail("Not yet implemented");
+	}
+	
+	@After
+	 public void tearDown() throws Exception{
+		cc1 = null;
+		cc2 = null;
+		cb1 = null;
+		cb2 = null;
+		camcorderList = null;
+		chromebookList = null;
 	}
 }
