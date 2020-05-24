@@ -126,14 +126,11 @@ public class ResourceCentre {
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		String output = "";
 		ResourceCentre.setHeader("CAMCORDER LIST");
-		output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
+		output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
 				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
 		for (int i = 0; i < camcorderList.size(); i++) {
 
-			output += String.format("%-10s %-20s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
-					camcorderList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
-					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+			output += String.format("%-84s\n", camcorderList.get(i).toString());
 		}
 		return output;
 	}
@@ -147,14 +144,11 @@ public class ResourceCentre {
 	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
 		String output = "";
 		ResourceCentre.setHeader("CHROMEBOOK LIST");
-		output = String.format("%-10s %-20s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
+		output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
 				 "AVAILABLE", "DUE DATE","OPERATING SYSTEM");
 
 		for (int i = 0; i < chromebookList.size(); i++) {
-			output += String.format("%-10s %-20s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
-					chromebookList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
-					chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
+			output += String.format("%-84s\n", chromebookList.get(i).toString());
 		}
 		return output;
 	}
@@ -164,16 +158,7 @@ public class ResourceCentre {
 		System.out.println(output);
 	}
 
-	public static String showAvailability(boolean isAvailable) {
-		String avail;
 
-		if (isAvailable == true) {
-			avail = "Yes";
-		} else {
-			avail = "No";
-		}
-		return avail;
-	}
 	public static Camcorder inputCamcorder() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");

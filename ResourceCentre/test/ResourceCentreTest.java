@@ -22,7 +22,7 @@ public class ResourceCentreTest {
 		
 		cc1 = new Camcorder("CC0011", "Nikon HDSLR", 40);
 		cc2 = new Camcorder("CC0012", "Sony DSC-RX100M7", 20);
-		cb1 = new Chromebook("CB0011", "My Google Chromebook 1st ", "Mac OS");
+		cb1 = new Chromebook("CB0011", "My Google Chromebook 1st", "Mac OS");
 		cb2 = new Chromebook("CB0012", "SAMSUNG Chromebook 4+", "Win 10");
 
 		camcorderList= new ArrayList<Camcorder>();
@@ -57,10 +57,10 @@ public class ResourceCentreTest {
 		assertEquals("Check that Camcorder arraylist size is 2", 2, camcorderList.size());
 		
 		String allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
-		String testOutput = String.format("%-10s %-20s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", 
+		String testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", 
 				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
-		testOutput += String.format("%-10s %-20s %-10s %-10s %-20d\n","CC0011", "Nikon HDSLR", "Yes", "", 40);
-		testOutput += String.format("%-10s %-20s %-10s %-10s %-20d\n","CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0011", "Nikon HDSLR", "Yes", "", "40");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0012", "Sony DSC-RX100M7", "Yes", "", "20");
 	
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
 		
