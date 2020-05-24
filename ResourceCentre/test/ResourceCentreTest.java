@@ -49,69 +49,69 @@ public class ResourceCentreTest {
 	}
 	
 	@Test
-	public void allCamcorderTest() {
+	public void retrieveAllCamcorderTest() {
 
 		assertNotNull("Check if there is valid Camcorder arraylist to add to", camcorderList);
 		ResourceCentre.addCamcorder(camcorderList, cc1);
 		ResourceCentre.addCamcorder(camcorderList, cc2);
 		assertEquals("Check that Camcorder arraylist size is 2", 2, camcorderList.size());
 		
-		String allCamcorder= ResourceCentre.allCamcorder(camcorderList);
-		String testOutput = String.format("%-10s %-20s %-20s %-10s %-10s \n", "ASSET TAG", "DESCRIPTION", "OPTICAL ZOOM",
-				"AVAILABLE", "DUE DATE");
-		testOutput += String.format("%-10s %-20s %-20d %-10s %-10s \n","CC0011", "Nikon HDSLR", 40, "Yes", "");
-		testOutput += String.format("%-10s %-20s %-20d %-10s %-10s \n","CC0012", "Sony DSC-RX100M7", 20, "Yes", "");
+		String allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
+		String testOutput = String.format("%-10s %-20s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", 
+				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
+		testOutput += String.format("%-10s %-20s %-10s %-10s %-20d\n","CC0011", "Nikon HDSLR", "Yes", "", 40);
+		testOutput += String.format("%-10s %-20s %-10s %-10s %-20d\n","CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
 	
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
 		
 	}
 	@Test
-	public void allChromebookTest() {
+	public void retrieveAllChrombookTest() {
 		//fail("Not yet implemented");
 	}
 
 	@Test
-	public void okLoanCamcorderTest() {
+	public void doLoanCamcorderTest() {
 		assertNotNull("Check if there is valid Camcorder arraylist to add to", camcorderList);
 		ResourceCentre.addCamcorder(camcorderList, cc1);
 		ResourceCentre.addCamcorder(camcorderList, cc2);
 		cc2.setIsAvailable(false);
 		
-		Boolean ok = ResourceCentre.okLoanCamcorder(camcorderList, "CC0011", "8-8-2020" );
+		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020" );
 		assertTrue("Check that item is ok to loan?", ok);		
 		
-		ok = ResourceCentre.okLoanCamcorder(camcorderList, "CC0012", "8-8-2020" );
+		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0012", "8-8-2020" );
 		assertFalse("Check that item is ok to loan?", ok);
 		
-		ok = ResourceCentre.okLoanCamcorder(camcorderList, "CC0013", "8-8-2020" );
+		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0013", "8-8-2020" );
 		assertFalse("Check that item is ok to loan?", ok);
 		
 	}
 	
 	@Test
-	public void okLoanChromebookTest() {
+	public void doLoanChromebookTest() {
 		//fail("Not yet implemented");
 	}
 	
 	@Test
-	public void isReturnedCamcorderTest() {
+	public void doReturnCamcorderTest() {
 		assertNotNull("Check if there is valid Camcorder arraylist to add to", camcorderList);
 		ResourceCentre.addCamcorder(camcorderList, cc1);
 		ResourceCentre.addCamcorder(camcorderList, cc2);
 		cc2.setIsAvailable(false);
 		
-		Boolean isReturned = ResourceCentre.isReturnedCamcorder(camcorderList, "CC0011");
+		Boolean isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
 		assertFalse("Check that item is returned?", isReturned);		
 		
-		isReturned = ResourceCentre.isReturnedCamcorder(camcorderList, "CC0012");
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
 		assertTrue("Check that item is returned", isReturned);
 		
-		isReturned = ResourceCentre.isReturnedCamcorder(camcorderList, "CC0013");
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0013");
 		assertFalse("Check that item is returned?", isReturned);
 		
 	}
 	@Test
-	public void isReturnedChromebookTest() {
+	public void doReturnChromebookTest() {
 		//fail("Not yet implemented");
 	}
 	
