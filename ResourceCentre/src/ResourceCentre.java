@@ -124,26 +124,23 @@ public class ResourceCentre {
 	}
 
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
-		String output = "";
-		ResourceCentre.setHeader("CAMCORDER LIST");
+		String output = "";	
 		output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
 				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
 		for (int i = 0; i < camcorderList.size(); i++) {
-
 			output += String.format("%-84s\n", camcorderList.get(i).toString());
 		}
 		return output;
 	}
 	
 	public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
-
+		ResourceCentre.setHeader("CAMCORDER LIST");
 		String output = retrieveAllCamcorder(camcorderList);	
 		System.out.println(output);
 	}
 
 	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
-		String output = "";
-		ResourceCentre.setHeader("CHROMEBOOK LIST");
+		String output = "";		
 		output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
 				 "AVAILABLE", "DUE DATE","OPERATING SYSTEM");
 
@@ -154,6 +151,7 @@ public class ResourceCentre {
 	}
 	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
 		
+		ResourceCentre.setHeader("CHROMEBOOK LIST");
 		String output = retrieveAllChromebook(chromebookList);
 		System.out.println(output);
 	}
