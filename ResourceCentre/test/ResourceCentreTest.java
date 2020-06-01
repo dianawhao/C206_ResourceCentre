@@ -37,14 +37,24 @@ public class ResourceCentreTest {
 		ResourceCentre.addCamcorder(camcorderList, cc1);
 		
 		assertEquals("Check that Camcorder arraylist size is 1", 1, camcorderList.size());
-		assertEquals("Check that Camcorder is added", cc1, camcorderList.get(0));
+		assertSame("Check that Camcorder is added", cc1, camcorderList.get(0));
 		
 		ResourceCentre.addCamcorder(camcorderList, cc2);
 		assertEquals("Check that Camcorder arraylist size is 2", 2, camcorderList.size());
+		assertSame("Check that Camcorder is added", cc2, camcorderList.get(1));
 	}
 	@Test
 	public void addChromebookTest() {
 		//fail("Not yet implemented");
+		assertNotNull("Check if there is valid Chromebook arraylist to add to", chromebookList);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		
+		assertEquals("Check that Chromebook arraylist size is 1", 1, chromebookList.size());
+		assertSame("Check that Chromebook is added", cb1, chromebookList.get(0));
+		
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Check that Chromebook arraylist size is 2", 2, chromebookList.size());
+		assertSame("Check that Chromebook is added", cb2, chromebookList.get(1));
 	}
 	
 	@Test
@@ -56,10 +66,8 @@ public class ResourceCentreTest {
 		assertEquals("Check that Camcorder arraylist size is 2", 2, camcorderList.size());
 		
 		String allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
-		String testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", 
-				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0011", "Nikon HDSLR", "Yes", "", "40");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0012", "Sony DSC-RX100M7", "Yes", "", "20");
+		String testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0011", "Nikon HDSLR", "Yes", "", "40");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CC0012", "Sony DSC-RX100M7", "Yes", "", "20" );
 	
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
 		
@@ -67,6 +75,16 @@ public class ResourceCentreTest {
 	@Test
 	public void retrieveAllChrombookTest() {
 		//fail("Not yet implemented");
+		assertNotNull("Check if there is valid Chromebook arraylist to add to", chromebookList);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Check that chromebook arraylist size is 2", 2, chromebookList.size());
+		
+		String allChrombook= ResourceCentre.retrieveAllChromebook(chromebookList);
+		String testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0011", "My Google Chromebook 1st","Yes", "", "Mac OS");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n","CB0012", "SAMSUNG Chromebook 4+", "Yes", "","Win 10");
+	
+		assertEquals("Check that ViewAllChromebooklist", testOutput, allChrombook);
 	}
 
 	@Test
@@ -90,6 +108,20 @@ public class ResourceCentreTest {
 	@Test
 	public void doLoanChromebookTest() {
 		//fail("Not yet implemented");
+		assertNotNull("Check if there is valid Chromebook arraylist to add to", chromebookList);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		cb2.setIsAvailable(false);
+		
+		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
+		assertTrue("Check that item is ok to loan?", ok);		
+		
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0012", "8-8-2020" );
+		assertFalse("Check that item is ok to loan?", ok);
+		
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0013", "8-8-2020" );
+		assertFalse("Check that item is ok to loan?", ok);
+		
 	}
 	
 	@Test
