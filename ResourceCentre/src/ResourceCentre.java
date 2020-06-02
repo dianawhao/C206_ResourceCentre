@@ -220,7 +220,7 @@ public class ResourceCentre {
 		}
 	}
 	
-	//================================= Option 4 Return =================================
+
 	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
 		// write your code here
 		boolean isLoaned = false;
@@ -249,11 +249,10 @@ public class ResourceCentre {
 			System.out.println("Invalid asset tag");
 		} else {
 			System.out.println("Chromebook " + tag + " loaned out");
-		}
-		
+		}	
 		
 	}
-	
+	//================================= Option 4 Return =================================
 	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList,String tag) {
 		boolean isReturned = false;
 
